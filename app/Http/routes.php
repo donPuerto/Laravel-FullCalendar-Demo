@@ -167,4 +167,16 @@ Route::group(['middlewareGroups' => ['web']], function () {
         );
     });
 
+    //Update Events
+    Route::patch('/api/editEvent/{id}/', function($id){
+        $jobschedules = JobSchedule::find($id);
+        //return  $contact;
+        return Response::json(
+            [
+                'response' => 'UpdateEvent',
+                'data' => ''
+            ]
+        );
+    });
+
 });
