@@ -1,0 +1,13 @@
+#spin {
+    background-color: rgba(0,0,0,.3);
+    position: fixed;
+    left:50%;
+    top:50%;
+    width: 135px;
+    height: 135px;
+    margin: -50px 0 0 -50px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    border-radius: 25px;
+    z-index: 9999999;
+}
