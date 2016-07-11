@@ -56,6 +56,9 @@
 <!-- jQuery UI Datepicker CSS -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-timepicker-addon/1.6.1/jquery-ui-timepicker-addon.min.css">
 
+<!-- Select2 Bootstrap Theme CSS -->
+<link rel="stylesheet" href="{{ URL::asset('css/select2-bootstrap-theme/select2-bootstrap.min.css') }}">
+
 <!-- Custom CSS -->
 <link rel="stylesheet" href="{{ URL::asset('css/main.css') }}">
 @endsection
@@ -90,15 +93,16 @@
         <div class="modal-content">
 
 
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Add Event</h4>
-                </div>
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Add Event</h4>
+            </div>
 
-                <div class="modal-body">
-                    <!-- Body Code Here-->
+            <div class="modal-body"><!-- Body Code Here-->
+                {!! Form::open(['class'=>'form-horizontal','id' => 'formAddEvent']) !!}
                     @include('include.modal-master-layout')
-                </div><!-- End Body Code Here-->
+                {!! Form::close() !!}
+            </div><!-- End Body Code Here-->
 
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -121,9 +125,10 @@
                     <h4 class="modal-title" id="myModalLabel">Edit Event</h4>
                 </div>
 
-                <div class="modal-body">
-                    <!-- Body Code Here-->
-                    @include('include.modal-master-layout')
+                <div class="modal-body"><!-- Body Code Here-->
+                    {!! Form::open(['class'=>'form-horizontal','id' => 'formUpdateEvent']) !!}
+                        @include('include.modal-master-layout')
+                    {!! Form::close() !!}
                 </div><!-- End Body Code Here-->
 
                 <div class="modal-footer">
@@ -330,57 +335,57 @@
     };
 
     app.search = function() {
-        var select2 = $("#contact").select2({
+        var select2 = $(".contact").select2({
+        theme: "bootstrap",
+        placeholder: 'Search a Contact',
+        ajax: {
+            url: "/api/contact/select2-search-contact",
+            dataType: 'json',
+            delay: 250,
+            data: function (params) {
+                return {
+                    q: params.term // search
+                };
+            },
+            processResults: function (data) {
+            // parse the results into the format expected by Select2.
+            // since we are using custom formatting functions we do not need to
+            // alter the remote JSON data
+            return {
+                results: $.map(data, function(obj) {
+                    //console.log(obj.id,obj.name);
 
-                    /*  theme: "bootstrap",*/
-                    placeholder: 'Search a Contact',
-                    ajax: {
-                        url: "/api/contact",
-                        dataType: 'json',
-                        delay: 250,
-                        data: function (params) {
-                            return {
-                                q: params.term // search
-                            };
-                        },
-                        processResults: function (data) {
-                            // parse the results into the format expected by Select2.
-                            // since we are using custom formatting functions we do not need to
-                            // alter the remote JSON data
-                            return {
-                                results: $.map(data.data, function(obj) {
-                                    //console.log(obj.id,obj.name);
-                                    //populate records
+                    //populate to dropdown
+                    return { id: obj.id, text: obj.name};
 
-                                    return { id: obj.id, text: obj.name};
-                                })
-                            };
-                        },
-                        cache: true
-                    },
-                    minimumInputLength: 1
-                }) //End Select2
-        .on('change', function(e){
-            var data = $('#contact').val();
-            //console.log(data);
-            $.ajax({
-                type: "GET",
-                url: "/api/contact/callback",
-                dataType: 'json',
-                data: {id: data},
-                success: function (obj){
-                    $.each( obj, function( key, value ){
-                        //console.log(value.totalRecord);
-                        $('.result').empty().append(
-                                '<span>Search Result(s): </span>' + value.name
-                        );
-                        $('#contact_search_result').val(value.name);
-                    });
-                }
-            }); //on events
-            e.preventDefault();
-        })
-        ; //end select
+                })
+            };
+        },
+        cache: true
+    }, //Ajax
+    minimumInputLength: 1
+    }) //End Select2
+    .on('change', function(e){
+
+        console.log($('.contact').val());
+        $.ajax({
+            type: "GET",
+            url: "/api/contact/search-contact",
+            dataType: 'json',
+            data: {id: $('.contact').val()},
+            success: function (obj){
+                $.each( obj, function( key, value ){
+                    //console.log(value.totalRecord);
+                    $('div .result').empty().append(
+                            '<span>Search Result(s): </span>' + '<strong>' +  value.name+'</strong>'
+                    );
+
+                });
+            }
+        }); //Ajax
+        e.preventDefault();
+    }) //on
+    ;  //end select
     };
 
     app.job_order_number = function (){
@@ -426,11 +431,18 @@
                 }
 
                 if(response.response == "EditEvent"){
+                    console.log('title: ' + response.data.contact_id);
                     console.log('Start Time: '+ response.data.start +' '+ moment(response.data.start).format('DD-MMM-YYYY hh:mma'));
                     console.log('End Time: ' + response.data.end +' '+ moment(response.data.end).format('DD-MMM-YYYY hh:mma'));
 
 
                     //Job Schedules
+                    //$('div .contact').select2('data', {id: 10, text: 'Isidro Wolff'});
+                    //$('div .contact').val('Isidro Wolff');
+                    $("div .contact").empty().append('<option value='+ response.data.contact_id +'>'+response.data.title+'</option>').val(response.data.contact_id).trigger('change');
+                    $('div .contact').attr("disabled", 'disabled');
+
+
                     $('div #job_order_number').val(response.data.job_order_number);
 
                     $("div #getcolor").spectrum("set",response.data.job_assign_color.substr(1));
@@ -551,8 +563,7 @@
             },
 
             eventRender: function(event, element) {
-                console.log('color: ' +
-                        event.pick_color);
+
                 element.find('.fc-time').hide();
                 element.css('border', 0);
                 element.css('background-color', event.job_assign_color);
@@ -604,7 +615,7 @@
             eventClick: function(event, jsEvent, view) {
                 //Show Edit Modal
                 $('#ModalEdit').modal('show');
-
+                $('div .contact').removeAttr('disabled');
                 //Call Ajax
                 //console.log(event.job_schedule_id);
                 app.ajax('/api/editEvent/'+event.job_schedule_id+'/edit', 'GET', '' , 'JSON');
@@ -666,7 +677,7 @@
     app.updateEvent = function (){
         $('#btnUpdateEvent').on('click', function (){
             console.log('Start Time: ' + app.newDate +' '+app.newTime);
-            alert('hit');
+            app.ajax('/api/updateEvent/'+10+'/update', 'PATCH', JSON.stringify($("#formUpdateEvent").serialize()), 'JSON');
         });
     };
 </script>

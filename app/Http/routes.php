@@ -25,20 +25,28 @@ Route::group(['middlewareGroups' => ['web']], function () {
         return view("home");
     });
 
-    Route::get('/api/contact', function(){
+    Route::get('/api/contact/select2-search-contact', function(){
 
 
-        $contacts = Contact::all();
-        return  Response::json([
-            'totalRecord' => Contact::count(),
-            'data' => $contacts
-        ]);
+        //check if its Ajax format
+        if(Request::ajax()) {
+            $term = Request::input('q');
+            //return $term;
+            $contact = Contact::where('name','LIKE', '%' . $term .'%')
+                ->orWhere('email', 'LIKE', '%'.  $term .'%')
+                ->orWhere('phone', 'LIKE', '%'.  $term .'%')
+
+                ->take(15)
+                ->get();
+            return \Response::json($contact);
+
+        }
 
 
     });
 
 
-    Route::get('/api/contact/callback', function(){
+    Route::get('/api/contact/search-contact', function(){
         if(Request::ajax()) {
             $term = Request::input('id');
             //return $term;
@@ -168,7 +176,7 @@ Route::group(['middlewareGroups' => ['web']], function () {
     });
 
     //Update Events
-    Route::patch('/api/editEvent/{id}/', function($id){
+    Route::patch('/api/updateEvent/{id}/update', function($id){
         $jobschedules = JobSchedule::find($id);
         //return  $contact;
         return Response::json(

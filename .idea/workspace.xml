@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/resources/views/home.blade.php" line="280" mnemonic="3" />
-    <bookmark url="file://$PROJECT_DIR$/resources/views/home.blade.php" line="665" mnemonic="1" />
-    <bookmark url="file://$PROJECT_DIR$/resources/views/home.blade.php" line="130" mnemonic="2" />
+    <bookmark url="file://$PROJECT_DIR$/resources/views/home.blade.php" line="285" mnemonic="3" />
+    <bookmark url="file://$PROJECT_DIR$/resources/views/home.blade.php" line="135" mnemonic="2" />
+    <bookmark url="file://$PROJECT_DIR$/resources/views/home.blade.php" line="465" mnemonic="1" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e326a141-02d8-4c41-afb5-da371feb6604" name="Default" comment="" />
@@ -51,6 +51,20 @@
         <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
       </PATH_ELEMENT>
     </PATH>
+    <PATH>
+      <PATH_ELEMENT>
+        <option name="myItemId" />
+        <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$Root" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="MySQL - fullcalendar@localhost" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="contacts" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+    </PATH>
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
@@ -81,9 +95,39 @@
       <file leaf-file-name="routes.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.923077">
-              <caret line="165" column="13" selection-start-line="165" selection-start-column="13" selection-end-line="165" selection-end-column="13" />
+            <state vertical-scroll-proportion="-45.153847">
+              <caret line="187" column="7" selection-start-line="187" selection-start-column="7" selection-end-line="187" selection-end-column="7" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="home.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/home.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-14.0">
+              <caret line="681" column="6" selection-start-line="681" selection-start-column="6" selection-end-line="681" selection-end-column="6" />
+              <folding>
+                <element signature="e#8412#9690#0#HTML" expanded="false" />
+                <marker date="1468250297349" expanded="true" signature="6049:6085" placeholder="..." />
+                <marker date="1468250297349" expanded="true" signature="22275:22291" placeholder="..." />
+                <marker date="1468250297349" expanded="true" signature="22396:22412" placeholder="..." />
+                <marker date="1468250297349" expanded="true" signature="22509:22525" placeholder="..." />
+                <marker date="1468250297349" expanded="true" signature="22620:22636" placeholder="..." />
+                <marker date="1468250297349" expanded="true" signature="22739:22755" placeholder="..." />
+                <marker date="1468250297349" expanded="true" signature="23023:23039" placeholder="..." />
+                <marker date="1468250297349" expanded="true" signature="23169:23185" placeholder="..." />
+                <marker date="1468250297349" expanded="true" signature="23493:23509" placeholder="..." />
+                <marker date="1468250297349" expanded="true" signature="23623:23639" placeholder="..." />
+                <marker date="1468250297349" expanded="true" signature="23751:23767" placeholder="..." />
+                <marker date="1468250297349" expanded="true" signature="23868:23884" placeholder="..." />
+                <marker date="1468250297349" expanded="true" signature="23995:24011" placeholder="..." />
+                <marker date="1468250297349" expanded="true" signature="24120:24136" placeholder="..." />
+                <marker date="1468250297349" expanded="true" signature="24252:24268" placeholder="..." />
+                <marker date="1468250297349" expanded="true" signature="24387:24403" placeholder="..." />
+                <marker date="1468250297349" expanded="true" signature="24509:24525" placeholder="..." />
+                <marker date="1468250297349" expanded="true" signature="24630:24646" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -103,68 +147,37 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ModelFactory.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/database/factories/ModelFactory.php">
+      <file leaf-file-name="modal-master-layout.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/include/modal-master-layout.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="72" column="0" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="fullcalendar.jobschedules" pinned="false" current-in-tab="false">
-        <entry file="dbDummy://dbtable:/c337cba5/bfec279b-b5e7-456a-a0b5-ddcac85a8d93/fullcalendar.jobschedules">
-          <provider editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-            <state>
-              <filtering enabled="true" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="home.blade.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/views/home.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.3530464">
-              <caret line="230" column="0" selection-start-line="230" selection-start-column="0" selection-end-line="230" selection-end-column="0" />
+            <state vertical-scroll-proportion="-16.384615">
+              <caret line="463" column="0" selection-start-line="463" selection-start-column="0" selection-end-line="463" selection-end-column="0" />
               <folding>
-                <element signature="e#8068#9346#0#HTML" expanded="false" />
-                <element signature="e#14662#20698#0#HTML" expanded="false" />
-                <element signature="e#20828#26684#0#HTML" expanded="false" />
-                <marker date="1468155215781" expanded="true" signature="5705:5741" placeholder="..." />
-                <marker date="1468155215781" expanded="true" signature="22018:22034" placeholder="..." />
-                <marker date="1468155215781" expanded="true" signature="22139:22155" placeholder="..." />
-                <marker date="1468155215781" expanded="true" signature="22252:22268" placeholder="..." />
-                <marker date="1468155215781" expanded="true" signature="22363:22379" placeholder="..." />
-                <marker date="1468155215781" expanded="true" signature="22482:22498" placeholder="..." />
-                <marker date="1468155215781" expanded="true" signature="22766:22782" placeholder="..." />
-                <marker date="1468155215781" expanded="true" signature="22912:22928" placeholder="..." />
-                <marker date="1468155215781" expanded="true" signature="23236:23252" placeholder="..." />
-                <marker date="1468155215781" expanded="true" signature="23366:23382" placeholder="..." />
-                <marker date="1468155215781" expanded="true" signature="23494:23510" placeholder="..." />
-                <marker date="1468155215781" expanded="true" signature="23611:23627" placeholder="..." />
-                <marker date="1468155215781" expanded="true" signature="23738:23754" placeholder="..." />
-                <marker date="1468155215781" expanded="true" signature="23863:23879" placeholder="..." />
-                <marker date="1468155215781" expanded="true" signature="23995:24011" placeholder="..." />
-                <marker date="1468155215781" expanded="true" signature="24130:24146" placeholder="..." />
-                <marker date="1468155215781" expanded="true" signature="24252:24268" placeholder="..." />
-                <marker date="1468155215781" expanded="true" signature="24373:24389" placeholder="..." />
+                <element signature="e#355#373#0#HTML" expanded="true" />
+                <element signature="e#445#492#0#HTML" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="modal-master-layout.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/include/modal-master-layout.blade.php">
+      <file leaf-file-name="readme.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/readme.md">
+          <provider editor-type-id="MarkdownPreviewEditor">
+            <state />
+          </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.230769">
-              <caret line="149" column="82" selection-start-line="149" selection-start-column="67" selection-end-line="149" selection-end-column="82" />
+            <state vertical-scroll-proportion="0.7135135">
+              <caret line="18" column="10" selection-start-line="18" selection-start-column="10" selection-end-line="18" selection-end-column="10" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="phpunit.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/phpunit.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -229,6 +242,7 @@
         <option value="$PROJECT_DIR$/resources/views/include/modal-master-layout.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/home.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/routes.php" />
+        <option value="$PROJECT_DIR$/readme.md" />
       </list>
     </option>
   </component>
@@ -294,6 +308,114 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="fullcalendar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fullcalendar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fullcalendar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fullcalendar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fullcalendar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="include" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fullcalendar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fullcalendar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fullcalendar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fullcalendar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fullcalendar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fullcalendar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fullcalendar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fullcalendar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="select2-bootstrap-theme" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -435,20 +557,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/css/main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/layouts/master-page.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.846154">
-          <caret line="14" column="7" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/include/ie-support.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-5.923077">
@@ -752,37 +860,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="dbDummy://dbtable:/c337cba5/bfec279b-b5e7-456a-a0b5-ddcac85a8d93/fullcalendar.payments">
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/factories/ModelFactory.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="72" column="0" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/c337cba5/bfec279b-b5e7-456a-a0b5-ddcac85a8d93/fullcalendar.contacts">
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
@@ -807,49 +889,95 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/include/modal-master-layout.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.230769">
-          <caret line="149" column="82" selection-start-line="149" selection-start-column="67" selection-end-line="149" selection-end-column="82" />
+    <entry file="dbDummy://dbtable:/c337cba5/bfec279b-b5e7-456a-a0b5-ddcac85a8d93/fullcalendar.payments">
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.923077">
-          <caret line="165" column="13" selection-start-line="165" selection-start-column="13" selection-end-line="165" selection-end-column="13" />
+    <entry file="dbDummy://dbtable:/c337cba5/bfec279b-b5e7-456a-a0b5-ddcac85a8d93/fullcalendar.contacts">
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/home.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.3530464">
-          <caret line="230" column="0" selection-start-line="230" selection-start-column="0" selection-end-line="230" selection-end-column="0" />
+        <state vertical-scroll-proportion="-14.0">
+          <caret line="681" column="6" selection-start-line="681" selection-start-column="6" selection-end-line="681" selection-end-column="6" />
           <folding>
-            <element signature="e#8068#9346#0#HTML" expanded="false" />
-            <element signature="e#14662#20698#0#HTML" expanded="false" />
-            <element signature="e#20828#26684#0#HTML" expanded="false" />
-            <marker date="1468155215781" expanded="true" signature="5705:5741" placeholder="..." />
-            <marker date="1468155215781" expanded="true" signature="22018:22034" placeholder="..." />
-            <marker date="1468155215781" expanded="true" signature="22139:22155" placeholder="..." />
-            <marker date="1468155215781" expanded="true" signature="22252:22268" placeholder="..." />
-            <marker date="1468155215781" expanded="true" signature="22363:22379" placeholder="..." />
-            <marker date="1468155215781" expanded="true" signature="22482:22498" placeholder="..." />
-            <marker date="1468155215781" expanded="true" signature="22766:22782" placeholder="..." />
-            <marker date="1468155215781" expanded="true" signature="22912:22928" placeholder="..." />
-            <marker date="1468155215781" expanded="true" signature="23236:23252" placeholder="..." />
-            <marker date="1468155215781" expanded="true" signature="23366:23382" placeholder="..." />
-            <marker date="1468155215781" expanded="true" signature="23494:23510" placeholder="..." />
-            <marker date="1468155215781" expanded="true" signature="23611:23627" placeholder="..." />
-            <marker date="1468155215781" expanded="true" signature="23738:23754" placeholder="..." />
-            <marker date="1468155215781" expanded="true" signature="23863:23879" placeholder="..." />
-            <marker date="1468155215781" expanded="true" signature="23995:24011" placeholder="..." />
-            <marker date="1468155215781" expanded="true" signature="24130:24146" placeholder="..." />
-            <marker date="1468155215781" expanded="true" signature="24252:24268" placeholder="..." />
-            <marker date="1468155215781" expanded="true" signature="24373:24389" placeholder="..." />
+            <element signature="e#8412#9690#0#HTML" expanded="false" />
+            <marker date="1468250297349" expanded="true" signature="6049:6085" placeholder="..." />
+            <marker date="1468250297349" expanded="true" signature="22275:22291" placeholder="..." />
+            <marker date="1468250297349" expanded="true" signature="22396:22412" placeholder="..." />
+            <marker date="1468250297349" expanded="true" signature="22509:22525" placeholder="..." />
+            <marker date="1468250297349" expanded="true" signature="22620:22636" placeholder="..." />
+            <marker date="1468250297349" expanded="true" signature="22739:22755" placeholder="..." />
+            <marker date="1468250297349" expanded="true" signature="23023:23039" placeholder="..." />
+            <marker date="1468250297349" expanded="true" signature="23169:23185" placeholder="..." />
+            <marker date="1468250297349" expanded="true" signature="23493:23509" placeholder="..." />
+            <marker date="1468250297349" expanded="true" signature="23623:23639" placeholder="..." />
+            <marker date="1468250297349" expanded="true" signature="23751:23767" placeholder="..." />
+            <marker date="1468250297349" expanded="true" signature="23868:23884" placeholder="..." />
+            <marker date="1468250297349" expanded="true" signature="23995:24011" placeholder="..." />
+            <marker date="1468250297349" expanded="true" signature="24120:24136" placeholder="..." />
+            <marker date="1468250297349" expanded="true" signature="24252:24268" placeholder="..." />
+            <marker date="1468250297349" expanded="true" signature="24387:24403" placeholder="..." />
+            <marker date="1468250297349" expanded="true" signature="24509:24525" placeholder="..." />
+            <marker date="1468250297349" expanded="true" signature="24630:24646" placeholder="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-45.153847">
+          <caret line="187" column="7" selection-start-line="187" selection-start-column="7" selection-end-line="187" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/include/modal-master-layout.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-16.384615">
+          <caret line="463" column="0" selection-start-line="463" selection-start-column="0" selection-end-line="463" selection-end-column="0" />
+          <folding>
+            <element signature="e#355#373#0#HTML" expanded="true" />
+            <element signature="e#445#492#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phpunit.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/readme.md">
+      <provider editor-type-id="MarkdownPreviewEditor">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7135135">
+          <caret line="18" column="10" selection-start-line="18" selection-start-column="10" selection-end-line="18" selection-end-column="10" />
+          <folding />
         </state>
       </provider>
     </entry>

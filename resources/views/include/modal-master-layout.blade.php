@@ -1,5 +1,3 @@
-{!! Form::open(['class'=>'form-horizontal','id' => 'formAddEvent']) !!}
-
 <input type="hidden" name="contact" id="contact_search_result">
 
 <div id="accordion1" class="accordion blue">
@@ -10,10 +8,17 @@
         </div>
 
         <div class="accordion-content">
+            <select name="contact" style="width:100%" class="form-control contact"></select>
+            <div class="result" style="margin: 2px 0 10px 0; color: dodgerblue"></div>
 
-            <select id="contact" name="contact" style="width:100%" class="form-control"></select>
-            <div class="result" style="margin: 10px 0 30px 0"></div>
+            {{--<div class="form-group">
 
+                    <div>Contact Name: <span></span></div>
+                    <div>Hello World</div>
+
+
+
+            </div>--}}
         </div>
     </div>
 </div> {{--Accordion1--}}
@@ -456,4 +461,3 @@
 </div> {{--Accordion7--}}
 
 
-{!! Form::close() !!}
