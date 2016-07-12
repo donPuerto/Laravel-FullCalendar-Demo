@@ -34,9 +34,8 @@ $factory->define(App\JobSchedule::class, function (Faker\Generator $faker) {
     return [
 
         'contact_id' => $faker->numberBetween($min = 1, $max = 10),
-        'job_assign_color' => '#d3d3d3',
+        'job_assign_color' => $faker->hexColor,
         'job_order_number' => $faker->dayOfMonth($max = 'now').$faker->month($max = 'now').$faker->year($max = 'now').$faker->bothify('##?##??##'),
-        'job_queue' => $faker->numberBetween($min = 1, $max = 20),
         'service_type' => $faker->randomElement($array = array('Windows Painting', 'Repairs and Maintenance', 'Repairs-Screen', 'New Security Screen', 'Glass Replacement')),
         'technician' => $faker->name,
         'job_description' => $faker->sentence,
@@ -57,11 +56,9 @@ $factory->define(App\JobSchedule::class, function (Faker\Generator $faker) {
 
 
 $factory->define(App\SiteContact::class, function (Faker\Generator $faker) {
-
-
     return [
         'site_contact_name' => $faker->name,
-        //'jobschedule_id' =>  $faker->unique()->randomNumber($nbDigits = 9),
+        'jobschedule_id' =>  $faker->numberBetween($min = 1, $max = 10),
         'site_contact_job_title' => $faker->jobTitle,
         'site_contact_phone1' => $faker->phoneNumber,
         'site_contact_phone2' => $faker->phoneNumber,
@@ -74,7 +71,7 @@ $factory->define(App\SiteContact::class, function (Faker\Generator $faker) {
 $factory->define(App\Payment::class, function (Faker\Generator $faker) {
 
     return [
-        //'jobschedule_id' => $i++,
+        'jobschedule_id' => $faker->numberBetween($min = 1, $max = 10),
         'payment_type' => $faker->randomElement($array = array('Credit Card','Cash','Cheque')),
         'payment_status' => $faker->randomElement($array = array('Collectible','Paid','Due')),
         'payment_estimated_charge' =>$faker->numberBetween($min = 1000, $max =100000),
@@ -88,7 +85,7 @@ $factory->define(App\Payment::class, function (Faker\Generator $faker) {
 
 $factory->define(App\ExtraJob::class, function (Faker\Generator $faker) {
     return [
-        'jobschedule_id' => $faker->numberBetween($min = 1, $max =100),
+        'jobschedule_id' => $faker->numberBetween($min = 1, $max = 10),
         'extra_service_type' => $faker->randomElement($array = array('Windows Painting', 'Repairs and Maintenance', 'Repairs-Screen', 'New Security Screen', 'Glass Replacement')),
         'extra_job_description' => $faker->paragraph,
         'extra_job_assign_tech' => $faker->name,
@@ -102,7 +99,7 @@ $factory->define(App\ExtraJob::class, function (Faker\Generator $faker) {
 
 $factory->define(App\ServiceCall::class, function (Faker\Generator $faker) {
     return [
-        'jobschedule_id' => $faker->numberBetween($min = 1, $max =100),
+        'jobschedule_id' => $faker->numberBetween($min = 1, $max = 10),
         'sc_service_type' => $faker->randomElement($array = array('Windows Painting', 'Repairs and Maintenance', 'Repairs-Screen', 'New Security Screen', 'Glass Replacement')),
         'sc_job_description' => $faker->paragraph,
         'sc_job_fault_tech' => $faker->name,

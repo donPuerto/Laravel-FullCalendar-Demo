@@ -22,10 +22,10 @@ class DatabaseSeeder extends Seeder
 
         factory(App\User::class,1)->create();
         factory(App\Contact::class,10)->create();
-        factory(App\SiteContact::class,100)->create();
-        factory(App\JobSchedule::class,100)->create();
-        factory(App\Payment::class,100)->create();
-        factory(App\ServiceCall::class,100)->create();
-        factory(App\ExtraJob::class,100)->create();
+        factory(App\SiteContact::class,10)->create();
+        factory(App\JobSchedule::class,10)->create();
+        factory(App\Payment::class,10)->create();
+        factory(App\ServiceCall::class,10)->create();
+        factory(App\ExtraJob::class,10)->create();
     }
 }

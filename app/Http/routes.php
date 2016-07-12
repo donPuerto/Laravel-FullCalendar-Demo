@@ -84,7 +84,7 @@ Route::group(['middlewareGroups' => ['web']], function () {
                 'payment_actual_charge'    => $jobschedule->payments->payment_actual_charge,
 
                 'site_contact_name' => $jobschedule->sitecontacts->site_contact_name,
-                //'site_contact_job_title' => $jobschedule->sitecontacts->site_contact_job_title,
+                'site_contact_job_title' => $jobschedule->sitecontacts->site_contact_job_title,
                 'site_contact_phone1' => $jobschedule->sitecontacts->site_contact_phone1,
                 'site_contact_phone2' => $jobschedule->sitecontacts->site_contact_phone2,
                 'site_contact_notes' => $jobschedule->sitecontacts->site_contact_notes,
@@ -104,7 +104,6 @@ Route::group(['middlewareGroups' => ['web']], function () {
             $contact = Contact::find(Request::input('contact'));
             $contact->jobschedules()->create([
                 'job_order_number' => Request::input('job_order_number'),
-                'job_queue' => Request::input('job_queue'),
                 'job_assign_color' => Request::input('setcolor'),
                 'service_type' => Request::input('service_type'),
                 'technician' => Request::input('technician'),
@@ -118,7 +117,7 @@ Route::group(['middlewareGroups' => ['web']], function () {
                 'job_site_postal_code' => Request::input('job_site_postal_code'),
                 'job_site_country' => Request::input('job_site_country'),
                 'title' => $contact->name,
-                'start' => date('Y-m-d H:i:s',strtotime(Request::input('start_date'))),
+                'start' => date('Y-m-d H:i:s',strtotime(Request::input('startData') .' '. Request::input('startTime'))),
                 'end' => date('Y-m-d H:i:s',strtotime(Request::input('end_date'))),
             ]);
 
@@ -179,6 +178,12 @@ Route::group(['middlewareGroups' => ['web']], function () {
     Route::patch('/api/updateEvent/{id}/update', function($id){
         $jobschedules = JobSchedule::find($id);
         //return  $contact;
+
+        /*App\Flight::where('active', 1)
+            ->where('destination', 'San Diego')
+            ->update(['delayed' => 1]);*/
+
+
         return Response::json(
             [
                 'response' => 'UpdateEvent',

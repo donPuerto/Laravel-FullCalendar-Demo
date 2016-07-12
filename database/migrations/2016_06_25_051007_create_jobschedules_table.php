@@ -16,7 +16,6 @@ class CreateJobschedulesTable extends Migration
             $table->increments('id');
             $table->integer('contact_id')->unsigned();
             $table->string('job_order_number',100);
-            $table->integer('job_queue');
             $table->string('service_type',50);
             $table->string('technician',50);
             $table->string('job_assign_color');

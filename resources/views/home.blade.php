@@ -88,7 +88,7 @@
 </div> <!-- End Wrapper-->
 
 <!-- Modal -->
-<div class="modal fade" id="ModalAdd" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="modalAddEvent" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
 
@@ -105,7 +105,7 @@
             </div><!-- End Body Code Here-->
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-default" onclick="addEventClose()">Close</button>
                 <button type="submit" class="btn btn-primary" id="btnAddEvent">Save Event</button>
             </div>
 
@@ -116,7 +116,7 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="ModalEdit" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="modalEditEvent" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
 
@@ -132,7 +132,7 @@
                 </div><!-- End Body Code Here-->
 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-default" onclick="updateEventClose()">Close</button>
                     <button type="submit" class="btn btn-primary" id="btnUpdateEvent">Update changes</button>
                 </div>
 
@@ -287,18 +287,7 @@
 
         $('div .startDatePicker').datetimepicker({
             'showTimepicker': false,
-            dateFormat: 'dd-M-yy',
-            onSelect: function (data){
-
-                app.newDate = $('div .startDatePicker').val();
-                app.newTime = $('div .startTimePicker').val();
-
-                /*$('.startDateTime').val(
-                        (data +' '+ app.newTime ).toString()
-
-                );*/
-                //console.log((data +' '+ app.newTime).toString());
-            }
+            dateFormat: 'dd-M-yy'
         });
 
         $('div .startTimePicker').timepicker(
@@ -306,21 +295,7 @@
             timeFormat: "hh:mm tt",
             showAnim: 'slide',
             duration: 'fast',
-            hour: 9,
-            onSelect: function (data){
-
-                //console.log(data);
-
-                app.newDate = $('div .startDatePicker').val();
-                app.newTime = $('div .startTimePicker').val();
-
-                /*$('.startDateTime').val(
-                        ( $('div .startDatePicker').val() +' '+ data).toString()
-
-                );*/
-                //console.log(($('div .startDatePicker').val() +' '+ data).toString());
-            }
-
+            hour: 9
 
         });
 
@@ -329,7 +304,7 @@
             timeFormat: "hh:mm tt",
             hour: 9,
             showAnim: 'slide',
-            duration: 'fast',
+            duration: 'fast'
         });
 
     };
@@ -428,6 +403,7 @@
                     $('#formAddEvent').trigger('reset').modal('hide');
                     //Refresh Calendar
                     $('#calendar').fullCalendar("refetchEvents");
+
                 }
 
                 if(response.response == "EditEvent"){
@@ -435,10 +411,7 @@
                     console.log('Start Time: '+ response.data.start +' '+ moment(response.data.start).format('DD-MMM-YYYY hh:mma'));
                     console.log('End Time: ' + response.data.end +' '+ moment(response.data.end).format('DD-MMM-YYYY hh:mma'));
 
-
                     //Job Schedules
-                    //$('div .contact').select2('data', {id: 10, text: 'Isidro Wolff'});
-                    //$('div .contact').val('Isidro Wolff');
                     $("div .contact").empty().append('<option value='+ response.data.contact_id +'>'+response.data.title+'</option>').val(response.data.contact_id).trigger('change');
                     $('div .contact').attr("disabled", 'disabled');
 
@@ -466,57 +439,45 @@
 
                     $('div .startDatePicker').attr("disabled", false).val(moment(response.data.start).format('DD-MMM-YYYY'));
                     $('div .startTimePicker').val(moment(response.data.start).format('hh:mm a'));
-                    //app.newDate = moment(response.data.start).format('DD-MMM-YYYY');
-                    //app.newTime = moment(response.data.start).format('hh:mm a');
+
 
                     $('div .endDateTimePicker').datetimepicker(
                             'setDate',(new Date(moment(response.data.end).format('DD-MMM-YYYY hh:mm a')))
-
                     );
 
+                    //Payments
+                    $('div #payment_type').val(response.data.payments.payment_type);
+                    $('div #payment_status').val(response.data.payments.payment_status);
+                    $('div #payment_estimated_charge').val(response.data.payments.payment_estimated_charge);
+                    $('div #payment_actual_charge').val(response.data.payments.payment_actual_charge);
+                    $('div #payment_initial_deposit').val(response.data.payments.payment_initial_deposit);
+                    $('div #payment_collectible_amount').val(response.data.payments.payment_collectible_amount);
+                    $('div #payment_description').val(response.data.payments.payment_description);
+
+                    //Site Contacts
+                    $('div #site_contact_name').val(response.data.sitecontacts.site_contact_name);
+                    $('div #site_contact_job_title').val(response.data.sitecontacts.site_contact_job_title);
+                    $('div #site_contact_phone1').val(response.data.sitecontacts.site_contact_phone1);
+                    $('div #site_contact_phone2').val(response.data.sitecontacts.contact_phone2);
+                    $('div #site_contact_notes').val(response.data.sitecontacts.site_contact_notes);
+
+                    //Extra Jobs
+                    $('div #extra_service_type').val(response.data.extra_service_type);
+                    $('div #extra_job_description').val(response.data.extra_job_description);
+                    $('div #extra_service_type').val(response.data.extra_service_type);
+                    $('div #extra_job_assign_tech').val(response.data.extra_job_assign_tech);
+                    $('div #extra_payment_type').val(response.data.extra_payment_type);
+                    $('div #extra_payment_status').val(response.data.extra_payment_status);
+                    $('div #extra_job_total_charge').val(response.data.extra_job_total_charge);
+
+                    //Service Calls
+                    $('div #sc_service_type').val(response.data.sc_service_type);
+                    $('div #sc_job_description').val(response.data.sc_job_description);
+                    $('div #sc_job_fault_tech').val(response.data.sc_job_fault_tech);
+                    $('div #sc_job_assign_tech').val(response.data.sc_job_assign_tech);
+                    $('div #sc_est_service_charge').val(response.data.sc_est_service_charge);
 
 
-
-
-
-                        //Payments
-                        $('div #payment_type').val(response.data.payments.payment_type);
-                        $('div #payment_status').val(response.data.payments.payment_status);
-                        $('div #payment_estimated_charge').val(response.data.payments.payment_estimated_charge);
-                        $('div #payment_actual_charge').val(response.data.payments.payment_actual_charge);
-                        $('div #payment_initial_deposit').val(response.data.payments.payment_initial_deposit);
-                        $('div #payment_collectible_amount').val(response.data.payments.payment_collectible_amount);
-                        $('div #payment_description').val(response.data.payments.payment_description);
-
-                        //Site Contacts
-                        $('div #site_contact_name').val(response.data.sitecontacts.site_contact_name);
-                        $('div #site_contact_job_title').val(response.data.sitecontacts.site_contact_job_title);
-                        $('div #site_contact_phone1').val(response.data.sitecontacts.site_contact_phone1);
-                        $('div #site_contact_phone2').val(response.data.sitecontacts.contact_phone2);
-                        $('div #site_contact_notes').val(response.data.sitecontacts.site_contact_notes);
-
-                        //Extra Jobs
-                        $('div #extra_service_type').val(response.data.extra_service_type);
-                        $('div #extra_job_description').val(response.data.extra_job_description);
-                        $('div #extra_service_type').val(response.data.extra_service_type);
-                        $('div #extra_job_assign_tech').val(response.data.extra_job_assign_tech);
-                        $('div #extra_payment_type').val(response.data.extra_payment_type);
-                        $('div #extra_payment_status').val(response.data.extra_payment_status);
-                        $('div #extra_job_total_charge').val(response.data.extra_job_total_charge);
-
-                        //Service Calls
-                        $('div #sc_service_type').val(response.data.sc_service_type);
-                        $('div #sc_job_description').val(response.data.sc_job_description);
-                        $('div #sc_job_fault_tech').val(response.data.sc_job_fault_tech);
-                        $('div #sc_job_assign_tech').val(response.data.sc_job_assign_tech);
-                        $('div #sc_est_service_charge').val(response.data.sc_est_service_charge);
-
-
-                    //$('#formAddEvent').trigger('reset').modal('hide');
-
-
-                    //Update Calendar
-                    //$('#calendar').fullCalendar('updateEvent', event);
                 }
 
                 if(response.response == "UpdateEvent"){
@@ -605,25 +566,21 @@
             },
             //Show Events
             dayClick: function(date, jsEvent, view) {
-                $('#ModalAdd .startDatePicker').val(((date).format("DD-MMM-YYYY").toString())).attr('disabled',true);
-                $('#ModalAdd .startTimePicker').val("9:00 am");
+                $('#modalAddEvent .startDatePicker').val(((date).format("DD-MMM-YYYY").toString())).attr('disabled',true);
+                $('#modalAddEvent .startTimePicker').val("9:00 am");
 
-                $('#ModalAdd').modal('show');
+                $('#modalAddEvent').modal('show');
 
             },
             //Edit Events
             eventClick: function(event, jsEvent, view) {
                 //Show Edit Modal
-                $('#ModalEdit').modal('show');
+                $('#modalEditEvent').modal('show');
                 $('div .contact').removeAttr('disabled');
-                //Call Ajax
-                //console.log(event.job_schedule_id);
-                app.ajax('/api/editEvent/'+event.job_schedule_id+'/edit', 'GET', '' , 'JSON');
-               /* alert('Event: ' + event.site_contact_notes );
-                alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
-                alert('View: ' + view.name);*/
 
-            },
+                //Call Ajax
+                app.ajax('/api/editEvent/'+event.job_schedule_id+'/edit', 'GET', '' , 'JSON');
+              },
 
             eventDrop: function(event, delta, revertFunc) {
 
@@ -677,9 +634,27 @@
     app.updateEvent = function (){
         $('#btnUpdateEvent').on('click', function (){
             console.log('Start Time: ' + app.newDate +' '+app.newTime);
+            console.log(JSON.stringify($("#formUpdateEvent").serialize()));
             app.ajax('/api/updateEvent/'+10+'/update', 'PATCH', JSON.stringify($("#formUpdateEvent").serialize()), 'JSON');
         });
     };
+
+    function addEventClose(){
+        $('div .contact').removeAttr('disabled');
+        $('#modalAddEvent').modal('hide');
+        /*$('#modalAddEvent').on('hidden.bs.modal', '.modal', function () {
+            $(this).removeData('bs.modal');
+        });*/
+    }
+
+    function updateEventClose(){
+        $('div .contact').removeAttr('disabled');
+
+        /*$('#modalEditEvent').on('hidden.bs.modal', '.modal', function () {
+            $(this).removeData('bs.modal');
+        });*/
+        $('#modalEditEvent').modal('hide');
+    }
 </script>
 
 <script>

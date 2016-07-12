@@ -11,14 +11,7 @@
             <select name="contact" style="width:100%" class="form-control contact"></select>
             <div class="result" style="margin: 2px 0 10px 0; color: dodgerblue"></div>
 
-            {{--<div class="form-group">
 
-                    <div>Contact Name: <span></span></div>
-                    <div>Hello World</div>
-
-
-
-            </div>--}}
         </div>
     </div>
 </div> {{--Accordion1--}}
@@ -43,25 +36,6 @@
                 <label for="job_order_number" class="col-sm-4 control-label">Job Order Number</label>
                 <div class="col-sm-8">
                     <input type="text" name="job_order_number" class="form-control" id="job_order_number" readonly>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="job_queue" class="col-sm-4 control-label">Job Queue</label>
-                <div class="col-sm-8">
-                    <select class="form-control" name="job_queue" id="job_queue">
-                        <option>Please Select</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                        <option>6</option>
-                        <option>7</option>
-                        <option>8</option>
-                        <option>9</option>
-                        <option>10</option>
-                    </select>
                 </div>
             </div>
 
@@ -149,12 +123,12 @@
                 <div class="col-sm-8">
                     <div class="form-group">
                         <div class="col-sm-7" style="padding-right: 0">
-                            <input type="text" class="form-control startDatePicker"  disabled>
+                            <input type="text" class="form-control startDatePicker" name="startDate" disabled>
                         </div>
                         <div class="col-sm-5">
-                            <input type="text" class="form-control startTimePicker" required>
+                            <input type="text" class="form-control startTimePicker" name="startTime" required>
                         </div>
-                        <input type="hidden" class="form-control startDateTime" name="start_date">
+
                     </div>
 
                 </div>
