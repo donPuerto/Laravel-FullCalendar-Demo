@@ -39,11 +39,11 @@ class JobSchedule extends Model
     }
 
     public function extrajobs(){
-        return $this->hasMany(ExtraJob::class,'jobschedule_id', 'id');
+        return $this->hasOne(ExtraJob::class,'jobschedule_id', 'id');
     }
 
     public function servicecalls(){
-        return $this->hasMany(ServiceCall::class,'jobschedule_id', 'id');
+        return $this->hasOne(ServiceCall::class,'jobschedule_id', 'id');
     }
 
 }

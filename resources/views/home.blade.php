@@ -225,9 +225,6 @@
             console.log('hitz');
             app.spinStart();
         });
-
-
-
     };
 
     app.spinStart = function (){
@@ -312,6 +309,7 @@
     app.search = function() {
         var select2 = $(".contact").select2({
         theme: "bootstrap",
+        allowClear: true,
         placeholder: 'Search a Contact',
         ajax: {
             url: "/api/contact/select2-search-contact",
@@ -341,8 +339,7 @@
     minimumInputLength: 1
     }) //End Select2
     .on('change', function(e){
-
-        console.log($('.contact').val());
+        //console.log($('.contact').val());
         $.ajax({
             type: "GET",
             url: "/api/contact/search-contact",
@@ -380,9 +377,10 @@
 
     app.autoCompute = function (collectible_amount){
         //pending for Refactor
-        $("div #collectible_amount").val('0.00');
-        $("div #actual_charge, #initial_deposit").change( function() {
-        $("div #collectible_amount").val($("div #actual_charge").val() - $('div #initial_deposit').val());
+
+        $("div #payment_collectible_amount").empty().val('0.00');
+        $("div #payment_actual_charge, #payment_initial_deposit").on( 'keyup', function() {
+            $("div #payment_collectible_amount").val(parseFloat($("div #payment_actual_charge").val()) - parseFloat($('div #payment_initial_deposit').val()));
 
         });
     };
@@ -400,23 +398,27 @@
                 //console.log(response);
                 if(response.response == "AddEvent"){
                     alert('Saved');
-                    $('#formAddEvent').trigger('reset').modal('hide');
-                    //Refresh Calendar
-                    $('#calendar').fullCalendar("refetchEvents");
 
+                    //Refresh Calendar with entries
+                    $('#calendar').fullCalendar("refetchEvents");
                 }
 
                 if(response.response == "EditEvent"){
-                    console.log('title: ' + response.data.contact_id);
-                    console.log('Start Time: '+ response.data.start +' '+ moment(response.data.start).format('DD-MMM-YYYY hh:mma'));
-                    console.log('End Time: ' + response.data.end +' '+ moment(response.data.end).format('DD-MMM-YYYY hh:mma'));
+                    //console.log('title: ' + response.data.contact_id);
+                    //console.log('Start Time: '+ response.data.start +' '+ moment(response.data.start).format('DD-MMM-YYYY hh:mma'));
+                    //console.log('End Time: ' + response.data.end +' '+ moment(response.data.end).format('DD-MMM-YYYY hh:mma'));
 
                     //Job Schedules
                     $("div .contact").empty().append('<option value='+ response.data.contact_id +'>'+response.data.title+'</option>').val(response.data.contact_id).trigger('change');
                     $('div .contact').attr("disabled", 'disabled');
 
-
-                    $('div #job_order_number').val(response.data.job_order_number);
+                    //console.log('Edit: ' + response.data.id );
+                    $('.contact_id').val(response.data.contact_id);
+                    $('.job_schedule_id').val(response.data.id);
+                    $('.payment_id').val(response.data.payments.id);
+                    $('.site_contact_id').val(response.data.sitecontacts.id);
+                    $('.service_call_id').val(response.data.servicecalls.id);
+                    $('.extra_job_id').val(response.data.extrajobs.id);
 
                     $("div #getcolor").spectrum("set",response.data.job_assign_color.substr(1));
                     $("div .diplayHexColor").empty().append('<span class="diplayHexColor"> <strong>  Hex:</strong> ' + $("div #getcolor").val() +'</span>');
@@ -437,7 +439,7 @@
                     $('div #job_site_country').val(response.data.job_site_country);
 
 
-                    $('div .startDatePicker').attr("disabled", false).val(moment(response.data.start).format('DD-MMM-YYYY'));
+                    $('div .startDatePicker').val(moment(response.data.start).format('DD-MMM-YYYY'));
                     $('div .startTimePicker').val(moment(response.data.start).format('hh:mm a'));
 
 
@@ -458,33 +460,34 @@
                     $('div #site_contact_name').val(response.data.sitecontacts.site_contact_name);
                     $('div #site_contact_job_title').val(response.data.sitecontacts.site_contact_job_title);
                     $('div #site_contact_phone1').val(response.data.sitecontacts.site_contact_phone1);
-                    $('div #site_contact_phone2').val(response.data.sitecontacts.contact_phone2);
+                    $('div #site_contact_phone2').val(response.data.sitecontacts.site_contact_phone2);
                     $('div #site_contact_notes').val(response.data.sitecontacts.site_contact_notes);
 
                     //Extra Jobs
-                    $('div #extra_service_type').val(response.data.extra_service_type);
-                    $('div #extra_job_description').val(response.data.extra_job_description);
-                    $('div #extra_service_type').val(response.data.extra_service_type);
-                    $('div #extra_job_assign_tech').val(response.data.extra_job_assign_tech);
-                    $('div #extra_payment_type').val(response.data.extra_payment_type);
-                    $('div #extra_payment_status').val(response.data.extra_payment_status);
-                    $('div #extra_job_total_charge').val(response.data.extra_job_total_charge);
+                    $('div #extra_service_type').val(response.data.extrajobs.extra_service_type);
+                    $('div #extra_job_description').val(response.data.extrajobs.extra_job_description);
+                    $('div #extra_service_type').val(response.data.extrajobs.extra_service_type);
+                    $('div #extra_job_assign_tech').val(response.data.extrajobs.extra_job_assign_tech);
+                    $('div #extra_payment_type').val(response.data.extrajobs.extra_payment_type);
+                    $('div #extra_payment_status').val(response.data.extrajobs.extra_payment_status);
+                    $('div #extra_job_total_payment').val(response.data.extrajobs.extra_job_total_payment);
 
                     //Service Calls
-                    $('div #sc_service_type').val(response.data.sc_service_type);
-                    $('div #sc_job_description').val(response.data.sc_job_description);
-                    $('div #sc_job_fault_tech').val(response.data.sc_job_fault_tech);
-                    $('div #sc_job_assign_tech').val(response.data.sc_job_assign_tech);
-                    $('div #sc_est_service_charge').val(response.data.sc_est_service_charge);
+                    $('div #sc_service_type').val(response.data.servicecalls.sc_service_type);
+                    $('div #sc_job_description').val(response.data.servicecalls.sc_job_description);
+                    $('div #sc_job_fault_tech').val(response.data.servicecalls.sc_job_fault_tech);
+                    $('div #sc_job_assign_tech').val(response.data.servicecalls.sc_job_assign_tech);
+                    $('div #sc_est_service_charge').val(response.data.servicecalls.sc_est_service_charge);
 
-
+                    //Auto Compute Fields
+                    app.autoCompute();
                 }
 
                 if(response.response == "UpdateEvent"){
-
-
                     //Update Calendar
-                    //$('#calendar').fullCalendar('updateEvent', event);
+
+                    //Refresh Calendar with entries
+                    $('#calendar').fullCalendar("refetchEvents");
                 }
             },
             error: function (xhr, ajaxOptions, thrownError) {
@@ -496,25 +499,29 @@
         });
     };
 
-    app.loadEvents = function(){
+   /* app.loadEvents = function(){
         app.ajax('api/calendarEventsLoad','GET','','');
     };
-
+*/
     app.calendar = function (){
 
         // page is now ready, initialize the calendar...
         $('#calendar').fullCalendar({
-            // put your options and callbacks here
-            events:  {
-                url: '/api/calendarEventsLoad',
-                type: 'GET',
+            editable: true,
 
+
+            //Populate Event on Calendar
+            events:  {
+
+                url: '/api/populateEventOnCalendar',
+                type: 'GET',
                 error: function() {
                     alert('there was an error while fetching events!');
                 },
                 success: function(data) {
-                    //console.log(data);
+                    app.spinStop();
                 },
+
                 //color: 'grey',   // a non-ajax option
                 textColor: 'white' // a non-ajax option
             },
@@ -524,7 +531,6 @@
             },
 
             eventRender: function(event, element) {
-
                 element.find('.fc-time').hide();
                 element.css('border', 0);
                 element.css('background-color', event.job_assign_color);
@@ -559,43 +565,61 @@
                     },
                     position: {
                         my: 'top left',
-                        at: 'bottom center'
+                        at: 'bottom left'
                     }
                 });
 
             },
             //Show Events
             dayClick: function(date, jsEvent, view) {
-                $('#modalAddEvent .startDatePicker').val(((date).format("DD-MMM-YYYY").toString())).attr('disabled',true);
+                //console.log('start date: ' + ((date).format("DD-MMM-YYYY").toString()));
+                //console.log('jsEvent: ' + view.pageX);
+                $('#modalAddEvent .startDatePicker').val( (date).format("DD-MMM-YYYY").toString());
                 $('#modalAddEvent .startTimePicker').val("9:00 am");
+
+                //Generate Job Order Number: date[DDMMYY]time[hhmm]Random5characters
+                $('#job_order_number').val((date).format("DDMMYYhhmm").toString()+Math.random().toString(36).substr(2, 5));
+
+                //Set Readonly Attribute
+                $('div .startDatePicker').attr('readonly', true);
 
                 $('#modalAddEvent').modal('show');
 
             },
+
             //Edit Events
             eventClick: function(event, jsEvent, view) {
                 //Show Edit Modal
                 $('#modalEditEvent').modal('show');
                 $('div .contact').removeAttr('disabled');
+                $('div .startDatePicker').removeAttr('readonly');
+
 
                 //Call Ajax
+                //console.log('Event ID: '+event.job_schedule_id);
                 app.ajax('/api/editEvent/'+event.job_schedule_id+'/edit', 'GET', '' , 'JSON');
               },
 
+
             eventDrop: function(event, delta, revertFunc) {
+                //EventDrop Example
+                //alert(event.title + event.job_schedule_id+ " was dropped on " + event.start.format("DD-MMM-YYYY").toString() );
 
-                alert(event.title + " was dropped on " + event.start.format());
+                //Set Date
+                $('div .startDatePicker').val(event.start.format("DD-MMM-YYYY").toString());
+                $('div .endDateTimePicker').val(event.end.format("DD-MMM-YYYY hh:mm a").toString());
 
-                if (!confirm("Are you sure about this change?")) {
-                    revertFunc();
-                }
+                //Set ContactID
+                $('div .contact_id').val(event.contact_id);
+
+                //Call Ajax
+                app.ajax('/api/updateEvent/'+ event.job_schedule_id +'/update/', 'PATCH', JSON.stringify($("#formUpdateEvent").serialize()), '');
 
             },
 
             eventResize: function(event, delta, revertFunc) {
 
                 alert(event.title + " end is now " + event.end.format());
-
                 if (!confirm("is this okay?")) {
                     revertFunc();
                 }
@@ -613,7 +637,7 @@
 
             weekNumbers: true,
             droppable: true,
-            editable: true,
+
             selectable: true,
             selectHelper: true,
             contentHeight: 'auto',
@@ -626,33 +650,28 @@
 
     app.addEvent = function() {
         $('#btnAddEvent').on('click', function () {
-            //console.log($("#formAddEvent").serialize());
+            console.log(JSON.stringify($("#formAddEvent").serialize()));
             app.ajax('/api/addEvent', 'POST', JSON.stringify($("#formAddEvent").serialize()), 'JSON');
         });
     };
 
     app.updateEvent = function (){
         $('#btnUpdateEvent').on('click', function (){
-            console.log('Start Time: ' + app.newDate +' '+app.newTime);
-            console.log(JSON.stringify($("#formUpdateEvent").serialize()));
-            app.ajax('/api/updateEvent/'+10+'/update', 'PATCH', JSON.stringify($("#formUpdateEvent").serialize()), 'JSON');
+            //console.log('Start Time: ' + app.newDate +' '+app.newTime);
+            //console.log('Serialize Form: ' +JSON.stringify($("#formUpdateEvent").serialize()));
+            //console.log('Job ID: '+$('.job_schedule_id').val());
+            app.ajax('/api/updateEvent/'+$('.job_schedule_id').val()+'/update/', 'PATCH', JSON.stringify($("#formUpdateEvent").serialize()), '');
+
         });
     };
 
     function addEventClose(){
-        $('div .contact').removeAttr('disabled');
-        $('#modalAddEvent').modal('hide');
-        /*$('#modalAddEvent').on('hidden.bs.modal', '.modal', function () {
-            $(this).removeData('bs.modal');
-        });*/
+        $('div .contact').attr('disabled',false);
+       $('#modalAddEvent').modal('hide');
     }
 
     function updateEventClose(){
-        $('div .contact').removeAttr('disabled');
-
-        /*$('#modalEditEvent').on('hidden.bs.modal', '.modal', function () {
-            $(this).removeData('bs.modal');
-        });*/
+        $('div .contact').attr('disabled',false);
         $('#modalEditEvent').modal('hide');
     }
 </script>
@@ -669,7 +688,7 @@
         app.search();
         app.job_order_number();
         app.accordion();
-        app.loadEvents();
+        /*app.loadEvents();*/
         app.calendar();
         app.addEvent();
         //app.editEvent();
@@ -682,6 +701,23 @@
         //$("#getcolor").show();
         $("#getcolor").spectrum("set",'1197C1');
         $(".diplayHexColor").append($("#getcolor").val());
+
+
+        $("#modalEditEvent").on('hide.bs.modal', function () {
+            $('#formAddEvent').trigger('reset');
+            $('#formUpdateEvent').trigger('reset');
+            $("div .contact").val(null).trigger("change");
+            $('div .result').empty();
+        });
+        $("#modalAddEvent").on('hide.bs.modal', function () {
+
+            $('#formAddEvent').trigger('reset');
+            $('#formUpdateEvent').trigger('reset');
+
+            $("div .contact").val(null).trigger("change");
+            $('div .result').empty();
+        });
+
 
 
 

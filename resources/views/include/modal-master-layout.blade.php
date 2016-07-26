@@ -9,7 +9,7 @@
 
         <div class="accordion-content">
             <select name="contact" style="width:100%" class="form-control contact"></select>
-            <div class="result" style="margin: 2px 0 10px 0; color: dodgerblue"></div>
+            <div class="result" style="margin: 2px 0 5px 0; color: dodgerblue"></div>
 
 
         </div>
@@ -31,6 +31,14 @@
 
                 </div>
             </div>
+
+            {{--hidden Inputs--}}
+            <input type="hidden" name="contact_id" class="contact_id">
+            <input type="hidden" name="job_schedule_id" class="job_schedule_id">
+            <input type="hidden" name="payment_id" class="payment_id">
+            <input type="hidden" name="site_contact_id" class="site_contact_id">
+            <input type="hidden" name="service_call_id" class="service_call_id">
+            <input type="hidden" name="extra_job_id" class="extra_job_id">
 
             <div class="form-group">
                 <label for="job_order_number" class="col-sm-4 control-label">Job Order Number</label>
@@ -123,10 +131,11 @@
                 <div class="col-sm-8">
                     <div class="form-group">
                         <div class="col-sm-7" style="padding-right: 0">
-                            <input type="text" class="form-control startDatePicker" name="startDate" disabled>
+
+                            <input type="text" class="form-control startDatePicker" name="start_date" readonly>
                         </div>
                         <div class="col-sm-5">
-                            <input type="text" class="form-control startTimePicker" name="startTime" required>
+                            <input type="text" class="form-control startTimePicker" name="start_time" required>
                         </div>
 
                     </div>
@@ -204,9 +213,9 @@
             </div>
 
             <div class="form-group">
-                <label for="extra_job_total_payment" class="col-sm-4 control-label">Total Charge</label>
+                <label for="extra_job_total_payment" class="col-sm-4 control-label">Total Payment</label>
                 <div class="col-sm-8">
-                    <input type="text" name="extra_job_total_payment" class="form-control" id="extra_job_total_charge">
+                    <input type="text" name="extra_job_total_payment" class="form-control" id="extra_job_total_payment">
                 </div>
             </div>
 
@@ -316,7 +325,7 @@
 <div id="accordion6" class="accordion blue">
     <div class="accordion-item">
         <div class="accordion-header">
-            Site Contact Detail
+            Site Contact Details
             <span class="accordion-item-arrow"></span>
         </div>
 

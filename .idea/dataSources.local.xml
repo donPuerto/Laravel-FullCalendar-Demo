@@ -4,8 +4,8 @@
     <data-source name="MySQL - fullcalendar@localhost" uuid="bfec279b-b5e7-456a-a0b5-ddcac85a8d93">
       <secret-storage>master_key</secret-storage>
       <user-name>homestead</user-name>
-      <schema-pattern>fullcalendar.*</schema-pattern>
-      <default-schemas>fullcalendar.*</default-schemas>
+      <introspection-scope>fullcalendar:*</introspection-scope>
+      <resolve-scope>fullcalendar:*</resolve-scope>
     </data-source>
   </component>
 </project>
